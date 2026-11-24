@@ -10,12 +10,12 @@ t <div id="sep2" class="sep"></div>
 t <div id="ttl1" class="ttl">Wärmepumpe 1</div>
 t <div id="ttl2" class="ttl">Vorlauftemperatur</div>
 t <div id="ttl3" class="ttl">Wärmepumpe 2</div>
-t <div id="sub3" class="sub">Vorlauftemperatur</div>
-t <div id="sub4" class="sub">Rücklauftemperatur</div>
-t <div id="sub11" class="sub">Vorlauftemperatur</div>
-t <div id="sub12" class="sub">Rücklauftemperatur</div>
+t <div id="sub3" class="sub">Rücklauftemperatur</div>
+t <div id="sub4" class="sub">Vorlauftemperatur</div>
+t <div id="sub11" class="sub">Rücklauftemperatur</div>
+t <div id="sub12" class="sub">Vorlauftemperatur</div>
 t <div id="pos0" >
-t Metaart 1
+t Meta Art 1
 t </div>
 t <div id="pos1" >
 c o c 10020502091
