@@ -15,7 +15,7 @@ Alle Werte (`c o c …`-Zeilen), die einstellbaren Felder (`class="changex2"` + 
 Die einstellbaren Felder haben einen farbigen Rahmen und ein ✎-Symbol – ein Klick öffnet wie bisher die Eingabe.
 
 ## MTF-Logo tauschen
-`tools/mtf_logo.svg` ist ein Platzhalter. Echtes Logo als `tools/mtf_logo.png` ablegen und ausführen:
+Das Logo liegt in `tools/mtf_logo.png`. Zum Tauschen die Datei ersetzen und ausführen:
 
 ```
 node tools/render.js
@@ -24,4 +24,4 @@ node tools/render.js
 Das erzeugt `cmi/1.png` (Hintergrund mit Logo) und `vorschau.png` neu.
 
 ## Beschriftungen ändern
-Die Beschriftungen stehen als Text in `cmi/1.cgi` (z. B. `Anzeige 1`, `Wert A`) und können direkt angepasst werden.
+Die Beschriftungen stehen als Text in `cmi/1.cgi` (z. B. `Wärmepumpe 1`, `Vorlauftemperatur`) und können direkt angepasst werden.

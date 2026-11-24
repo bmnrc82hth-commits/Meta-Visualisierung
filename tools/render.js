@@ -1,6 +1,6 @@
 // Erzeugt cmi/1.png (Hintergrund mit MTF-Logo) und vorschau.png (Vorschau mit Beispielwerten).
 // Aufruf:  node tools/render.js
-// Echtes Logo: als tools/mtf_logo.png ablegen, sonst wird der Platzhalter tools/mtf_logo.svg verwendet.
+// Echtes Logo: als tools/mtf_logo.png ablegen.
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -9,7 +9,7 @@ const root = path.resolve(__dirname, '..');
 const tools = path.join(root, 'tools');
 const cmi = path.join(root, 'cmi');
 
-const logoFile = ['mtf_logo.png', 'mtf_logo.jpg', 'mtf_logo.svg']
+const logoFile = ['mtf_logo.png', 'mtf_logo.jpg']
   .map(f => path.join(tools, f)).find(f => fs.existsSync(f));
 const mime = { '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml' }[path.extname(logoFile)];
 const logoSrc = `data:${mime};base64,${fs.readFileSync(logoFile).toString('base64')}`;

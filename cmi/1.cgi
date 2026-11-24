@@ -7,14 +7,13 @@ t <div id="card6" class="card"></div>
 t <div id="card7" class="card"></div>
 t <div id="sep1" class="sep"></div>
 t <div id="sep2" class="sep"></div>
-t <div id="ttl1" class="ttl">Anzeige 1</div>
-t <div id="ttl2" class="ttl">Anzeige 2</div>
-t <div id="ttl3" class="ttl">Anzeige 3</div>
-t <div id="sub3" class="sub">Wert A</div>
-t <div id="sub4" class="sub">Wert B</div>
-t <div id="sub2" class="sub">Wert</div>
-t <div id="sub11" class="sub">Wert A</div>
-t <div id="sub12" class="sub">Wert B</div>
+t <div id="ttl1" class="ttl">Wärmepumpe 1</div>
+t <div id="ttl2" class="ttl">Vorlauftemperatur</div>
+t <div id="ttl3" class="ttl">Wärmepumpe 2</div>
+t <div id="sub3" class="sub">Vorlauftemperatur</div>
+t <div id="sub4" class="sub">Rücklauftemperatur</div>
+t <div id="sub11" class="sub">Vorlauftemperatur</div>
+t <div id="sub12" class="sub">Rücklauftemperatur</div>
 t <div id="pos0" >
 t Metaart 1
 t </div>
