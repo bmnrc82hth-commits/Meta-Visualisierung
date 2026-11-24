@@ -1,0 +1,74 @@
+<script type="text/javascript">
+titel ="Startseite";
+image = "1.png";
+refreshtime = 60;
+RefreshLink ="";
+taPageVersion = 1;
+$('meta[name="viewport"]').replaceWith('<meta name="viewport" content="width=1024">');
+</script>
+<style type="text/css">
+/* ===== MTF Visualisierung – Grundlayout ===== */
+body{background:rgb(13,24,40);}
+#values{width:1024px; height:768px;}
+#values div{box-sizing:border-box; font-family:"Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif; white-space:nowrap;}
+#values a{color:inherit; text-decoration:none;}
+
+/* Karten (Hintergrundflächen) */
+.card{position:absolute; border-radius:18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); box-shadow:0 10px 28px rgba(0,0,0,0.28);}
+#card1{left:20px;  top:104px; width:482px; height:170px;}
+#card2{left:20px;  top:290px; width:482px; height:130px;}
+#card3{left:20px;  top:436px; width:482px; height:150px; border-top:4px solid rgb(47,143,224);}
+#card4{left:20px;  top:602px; width:482px; height:150px; border-top:4px solid rgb(255,106,43);}
+#card5{left:522px; top:104px; width:482px; height:240px;}
+#card6{left:522px; top:360px; width:482px; height:130px;}
+#card7{left:522px; top:506px; width:482px; height:246px;}
+
+/* Trennlinien */
+.sep{position:absolute; left:546px; width:434px; height:1px; background:rgba(255,255,255,0.10);}
+#sep1{top:236px;}
+#sep2{top:642px;}
+
+/* Überschriften der Karten */
+#pos16, #pos6, #pos8, #pos7, .ttl{position:absolute; font-size:17px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgb(159,179,200);}
+#pos16, #pos16 a{left:44px; top:122px;}
+#pos6,  #pos6 a {left:44px; top:308px;}
+#pos8,  #pos8 a {left:44px; top:456px; color:rgb(120,190,255);}
+#pos7,  #pos7 a {left:44px; top:622px; color:rgb(255,160,110);}
+#ttl1{left:546px; top:122px;}
+#ttl2{left:546px; top:378px;}
+#ttl3{left:546px; top:524px;}
+
+/* Beschriftungen in den Zeilen rechts */
+.sub{position:absolute; left:546px; font-size:20px; color:rgb(200,214,228);}
+#sub3{top:182px;}
+#sub4{top:262px;}
+#sub2{top:432px;}
+#sub11{top:584px;}
+#sub12{top:668px;}
+
+/* ===== Kopfzeile ===== */
+#pos0{position:absolute; top:20px; left:530px; transform:translateX(-50%);}
+#pos0, #pos0 a{font-size:32px; font-weight:700; color:rgb(255,255,255); letter-spacing:0.5px;}
+#pos1{position:absolute; top:22px; left:840px; width:164px; height:42px; line-height:40px; text-align:center; font-size:22px; font-weight:600; color:rgb(255,255,255); background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.18); border-radius:21px;}
+
+/* ===== Raumtemperatur ===== */
+#pos15{position:absolute; top:150px; left:44px; width:434px; font-size:72px; font-weight:700; color:rgb(255,255,255); line-height:96px;}
+
+/* ===== Anzeigewerte rechts ===== */
+#pos3, #pos4, #pos2, #pos11, #pos12{position:absolute; left:700px; width:280px; text-align:right; font-size:38px; font-weight:700; color:rgb(255,255,255); line-height:52px;}
+#pos3{top:170px;}
+#pos4{top:250px;}
+#pos2{top:420px;}
+#pos11{top:572px;}
+#pos12{top:656px;}
+
+/* ===== Einstellbare Werte (Klick öffnet Eingabe) ===== */
+#pos5, #pos9, #pos10, #pos13, #pos14{position:absolute; height:62px; line-height:58px; padding:0 40px 0 18px; font-size:28px; font-weight:600; color:rgb(255,255,255); text-align:left; cursor:pointer; border-radius:14px; background:rgba(255,255,255,0.08); border:2px solid rgba(255,255,255,0.25); transition:background .15s;}
+#pos5:hover, #pos9:hover, #pos10:hover, #pos13:hover, #pos14:hover{background:rgba(255,255,255,0.16);}
+#pos5:after, #pos9:after, #pos10:after, #pos13:after, #pos14:after{content:"\270E"; position:absolute; right:14px; top:0; font-size:20px; opacity:0.6;}
+#pos5{top:342px; left:44px; width:434px; border-color:rgb(245,176,61);}
+#pos10{top:500px; left:44px;  width:210px; border-color:rgb(47,143,224);}
+#pos13{top:500px; left:268px; width:210px; border-color:rgb(47,143,224);}
+#pos9{top:666px; left:44px;  width:210px; border-color:rgb(255,106,43);}
+#pos14{top:666px; left:268px; width:210px; border-color:rgb(255,106,43);}
+</style>
