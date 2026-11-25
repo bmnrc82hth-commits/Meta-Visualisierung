@@ -5,6 +5,17 @@ refreshtime = 60;
 RefreshLink ="";
 taPageVersion = 1;
 $('meta[name="viewport"]').replaceWith('<meta name="viewport" content="width=1024">');
+// MTF-BETRIEBSART-START
+// Sommer/Winter: Eingangsparameter "EIN" wird als "Winter", "AUS" als "Sommer" angezeigt.
+function mtfBetriebsart(){
+  var el = document.getElementById('pos5');
+  if(!el) return;
+  var t = (el.textContent || '').replace(/\s+/g,' ').trim().toLowerCase();
+  if(t === 'ein' || t === 'an' || t === 'on'){ el.textContent = 'Winter'; el.setAttribute('data-mode','winter'); }
+  else if(t === 'aus' || t === 'off'){ el.textContent = 'Sommer'; el.setAttribute('data-mode','sommer'); }
+}
+setInterval(mtfBetriebsart, 250);
+// MTF-BETRIEBSART-END
 </script>
 <style type="text/css">
 /* ===== MTF Visualisierung – Grundlayout ===== */
@@ -70,4 +81,8 @@ body{background:rgb(13,24,40);}
 #pos13{top:500px; left:268px; width:210px; border-color:rgb(47,143,224);}
 #pos9{top:666px; left:44px;  width:210px; border-color:rgb(255,106,43);}
 #pos14{top:666px; left:268px; width:210px; border-color:rgb(255,106,43);}
+#pos5[data-mode="winter"]{border-color:rgb(120,190,255);}
+#pos5[data-mode="winter"]:before{content:"\2744"; margin-right:12px;}
+#pos5[data-mode="sommer"]{border-color:rgb(245,176,61);}
+#pos5[data-mode="sommer"]:before{content:"\2600"; margin-right:12px;}
 </style>
