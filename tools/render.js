@@ -19,7 +19,7 @@ const sample = {
   '10020502091': '14:35', '10120502091': '48,2 °C',
   '10927502091': '35,0 °C', '10A27502091': '30,5 °C',
   '10B27502091': '18,0 °C', '10C27502091': '22,0 °C',
-  '10324142091': 'Winter', '10424142091': 'AUS', '10624142091': '26,0 °C',
+  '10324142091': process.env.SW || 'EIN', '10424142091': 'AUS', '10624142091': '26,0 °C',
   '10524142091': 'EIN', '10724142091': '21,0 °C', '1012D012091': '21,8 °C',
 };
 
@@ -48,7 +48,9 @@ function cgiToHtml(cgi) {
   await page.setContent(`<!doctype html><html><head><meta charset="utf-8">${style}
     <style>body{margin:0}#values{position:relative;background:url(data:image/png;base64,${png}) no-repeat}</style>
     </head><body><div id="values">${body}</div></body></html>`, { waitUntil: 'load' });
-  await page.screenshot({ path: path.join(root, 'vorschau.png') });
+  const mtfJs = html.match(/\/\/ MTF-BETRIEBSART-START([\s\S]*?)\/\/ MTF-BETRIEBSART-END/);
+  if (mtfJs) await page.evaluate(mtfJs[1] + '; mtfBetriebsart();');
+  await page.screenshot({ path: path.join(root, process.env.OUT || 'vorschau.png') });
 
   await browser.close();
   console.log('OK: cmi/1.png und vorschau.png erzeugt (Logo: ' + path.basename(logoFile) + ')');
