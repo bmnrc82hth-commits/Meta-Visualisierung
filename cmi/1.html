@@ -7,14 +7,47 @@ taPageVersion = 1;
 $('meta[name="viewport"]').replaceWith('<meta name="viewport" content="width=1024">');
 // MTF-BETRIEBSART-START
 // Sommer/Winter: Eingangsparameter "EIN" wird als "Winter", "AUS" als "Sommer" angezeigt.
-function mtfBetriebsart(){
-  var el = document.getElementById('pos5');
-  if(!el) return;
-  var t = (el.textContent || '').replace(/\s+/g,' ').trim().toLowerCase();
-  if(t === 'ein' || t === 'an' || t === 'on'){ el.textContent = 'Winter'; el.setAttribute('data-mode','winter'); }
-  else if(t === 'aus' || t === 'off'){ el.textContent = 'Sommer'; el.setAttribute('data-mode','sommer'); }
+// Ändert nur die Anzeige. Unten rechts erscheint "MTF v5", wenn dieses Skript läuft.
+var MTF_VERSION = 'MTF v5';
+function mtfMode(t){
+  t = String(t || '').replace(/[\s ]+/g, ' ').replace(/^\s+|\s+$/g, '').toLowerCase();
+  if (/(^|[^a-zäöü])(ein|an|on)([^a-zäöü]|$)/.test(t)) return 'winter';
+  if (/(^|[^a-zäöü])(aus|off)([^a-zäöü]|$)/.test(t)) return 'sommer';
+  return '';
 }
-setInterval(mtfBetriebsart, 250);
+function mtfBetriebsart(){
+  try {
+    var el = document.getElementById('pos5');
+    if (!el) return;
+    if (!document.getElementById('mtfjs') && el.parentNode) {
+      var tag = document.createElement('div');
+      tag.id = 'mtfjs'; tag.appendChild(document.createTextNode(MTF_VERSION));
+      el.parentNode.appendChild(tag);
+    }
+    var label = { winter: 'Winter', sommer: 'Sommer' };
+    // Eingabefelder (falls das C.M.I. den Wert so darstellt)
+    var inputs = el.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+      var mi = mtfMode(inputs[i].value);
+      if (mi) { inputs[i].value = label[mi]; el.setAttribute('data-mode', mi); }
+    }
+    // Textknoten ersetzen, Unterelemente bleiben erhalten
+    var nodes = [], stack = [el];
+    while (stack.length) {
+      var n = stack.pop();
+      for (var c = n.firstChild; c; c = c.nextSibling) {
+        if (c.nodeType === 3) nodes.push(c);
+        else if (c.nodeType === 1 && c.tagName !== 'SCRIPT' && c.tagName !== 'STYLE') stack.push(c);
+      }
+    }
+    for (var k = 0; k < nodes.length; k++) {
+      var m = mtfMode(nodes[k].nodeValue);
+      if (m) { nodes[k].nodeValue = label[m]; el.setAttribute('data-mode', m); }
+    }
+  } catch (e) {}
+}
+if (!window.mtfTimer) { window.mtfTimer = setInterval(mtfBetriebsart, 250); }
+mtfBetriebsart();
 // MTF-BETRIEBSART-END
 </script>
 <style type="text/css">
@@ -85,4 +118,5 @@ body{background:rgb(13,24,40);}
 #pos5[data-mode="winter"]:before{content:"\2744"; margin-right:12px;}
 #pos5[data-mode="sommer"]{border-color:rgb(245,176,61);}
 #pos5[data-mode="sommer"]:before{content:"\2600"; margin-right:12px;}
+#mtfjs{position:absolute; left:904px; top:752px; width:100px; text-align:right; font-size:11px; color:rgba(255,255,255,0.35);}
 </style>
